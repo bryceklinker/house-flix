@@ -4,7 +4,10 @@
   "license": "MIT",
   "scripts": {
     "test": "nx affected --target=test --parallel=3",
-    "build": "nx affected --target=build --parallel=3"
+    "build": "nx affected --target=build --parallel=3",
+    "lint:fix": "nx affected --target=lint --fix",
+    "format:fix": "nx format:write",
+    "pre-commit": "lint-staged"
   },
   "private": true,
   "dependencies": {
