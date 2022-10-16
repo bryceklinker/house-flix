@@ -1,0 +1,3 @@
+.btn-primary {
+  @apply rounded bg-purple-800 text-white hover:brightness-75;
+}
