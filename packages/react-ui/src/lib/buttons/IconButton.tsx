@@ -1,6 +1,5 @@
 import { ButtonHTMLAttributes, FC, ReactElement } from 'react';
 
-import './IconButton.css';
 export type IconButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   icon: ReactElement;
 };
@@ -12,7 +11,7 @@ export const IconButton: FC<IconButtonProps> = ({
   ...props
 }) => {
   return (
-    <button className={`btn-primary ${className}`} {...props}>
+    <button className={`btn ${className}`} {...props}>
       {icon}
       {children}
     </button>

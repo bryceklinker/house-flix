@@ -1,0 +1,15 @@
+.btn {
+  @apply rounded shadow p-2 text-white hover:brightness-75;
+}
+
+.btn-primary {
+  @apply bg-purple-700;
+}
+
+.btn-link {
+  @apply btn btn-primary;
+}
+
+.active {
+  @apply border-l-8 border-solid border-yellow-300;
+}
