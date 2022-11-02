@@ -1,7 +1,7 @@
 {
-  "name": "api",
+  "name": "worker",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "packages/api/src",
+  "sourceRoot": "packages/worker/src",
   "projectType": "application",
   "targets": {
     "build": {
@@ -10,10 +10,10 @@
       "options": {
         "target": "node",
         "compiler": "tsc",
-        "outputPath": "dist/packages/api",
-        "main": "packages/api/src/main.ts",
-        "tsConfig": "packages/api/tsconfig.app.json",
-        "assets": ["packages/api/src/assets", "packages/api/src/dockerfile"],
+        "outputPath": "dist/packages/worker",
+        "main": "packages/worker/src/main.ts",
+        "tsConfig": "packages/worker/tsconfig.app.json",
+        "assets": ["packages/worker/src/assets", "packages/worker/src/dockerfile"],
         "generatePackageJson": true
       },
       "configurations": {
@@ -27,11 +27,11 @@
     "serve": {
       "executor": "@nrwl/js:node",
       "options": {
-        "buildTarget": "api:build"
+        "buildTarget": "worker:build"
       },
       "configurations": {
         "production": {
-          "buildTarget": "api:build:production"
+          "buildTarget": "worker:build:production"
         }
       }
     },
@@ -39,14 +39,14 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["packages/api/**/*.ts"]
+        "lintFilePatterns": ["packages/worker/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "packages/api/jest.config.ts",
+        "jestConfig": "packages/worker/jest.config.ts",
         "passWithNoTests": true
       }
     }

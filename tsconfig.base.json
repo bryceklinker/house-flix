@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@house-flix/models": ["packages/models/src/index.ts"],
-      "@house-flix/react-ui": ["packages/react-ui/src/index.ts"]
+      "@house-flix/react-ui": ["packages/react-ui/src/index.ts"],
+      "@house-flix/server-core": ["packages/server-core/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
