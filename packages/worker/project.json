@@ -13,7 +13,10 @@
         "outputPath": "dist/packages/worker",
         "main": "packages/worker/src/main.ts",
         "tsConfig": "packages/worker/tsconfig.app.json",
-        "assets": ["packages/worker/src/assets", "packages/worker/src/dockerfile"],
+        "assets": [
+          "packages/worker/src/assets",
+          "packages/worker/src/dockerfile"
+        ],
         "generatePackageJson": true
       },
       "configurations": {
