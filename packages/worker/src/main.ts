@@ -15,10 +15,10 @@ async function bootstrap() {
     logger: createHouseFlixLogger({ appName: 'worker' }),
     transport: Transport.MQTT,
     options: {
-      url: 'mqtt://mqtt:1883',
+      url: process.env.MQTT_URL,
     },
   });
-  Logger.log(`🚀 Application is running on: mqtt://mqtt:1883`);
+  Logger.log(`🚀 Application is running on: ${process.env.MQTT_URL}`);
 }
 
 bootstrap();
