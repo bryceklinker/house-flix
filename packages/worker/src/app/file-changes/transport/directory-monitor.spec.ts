@@ -40,7 +40,7 @@ describe('DirectoryMonitor', () => {
       encoding: 'utf-8',
     });
     await delay(200);
-    await fs.unlink(path.resolve(TESTING_DIRECTORY, 'my-file.txt'));
+    await fs.rm(path.resolve(TESTING_DIRECTORY, 'my-file.txt'));
 
     await eventually(() =>
       expect(actual).toEqual<DirectoryChangeEvent>({
@@ -69,6 +69,87 @@ describe('DirectoryMonitor', () => {
         type: 'change',
         isFile: true,
         isDirectory: false,
+      })
+    );
+  });
+
+  test('when directory is created then notifies subscriber', async () => {
+    let actual: DirectoryChangeEvent | null = null;
+    await client.subscribe((change) => (actual = change));
+
+    await fs.mkdir(path.resolve(TESTING_DIRECTORY, 'files'));
+
+    await eventually(() =>
+      expect(actual).toEqual<DirectoryChangeEvent>({
+        path: path.resolve(TESTING_DIRECTORY, 'files'),
+        isDirectory: true,
+        isFile: false,
+        type: 'add',
+      })
+    );
+  });
+
+  test('when directory is deleted then notifies subscriber', async () => {
+    let actual: DirectoryChangeEvent | null = null;
+    await client.subscribe((change) => (actual = change));
+
+    await fs.mkdir(path.resolve(TESTING_DIRECTORY, 'files'));
+    await delay(200);
+    await fs.rm(path.resolve(TESTING_DIRECTORY, 'files'), {
+      recursive: true,
+      force: true,
+    });
+
+    await eventually(() =>
+      expect(actual).toEqual<DirectoryChangeEvent>({
+        path: path.resolve(TESTING_DIRECTORY, 'files'),
+        isDirectory: false,
+        isFile: false,
+        type: 'delete',
+      })
+    );
+  });
+
+  test('when file is added to sub directory then notifies subscriber', async () => {
+    let actual: DirectoryChangeEvent | null = null;
+    await client.subscribe((change) => (actual = change));
+
+    await fs.mkdir(path.resolve(TESTING_DIRECTORY, 'files'));
+    await fs.writeFile(
+      path.resolve(TESTING_DIRECTORY, 'files', 'movie.mp4'),
+      'data',
+      { encoding: 'utf-8' }
+    );
+
+    await eventually(() =>
+      expect(actual).toEqual<DirectoryChangeEvent>({
+        path: path.resolve(TESTING_DIRECTORY, 'files', 'movie.mp4'),
+        isDirectory: false,
+        isFile: true,
+        type: 'add',
+      })
+    );
+  });
+
+  test('when file is deleted from sub directory then notifies subscriber', async () => {
+    let actual: DirectoryChangeEvent | null = null;
+    await client.subscribe((change) => (actual = change));
+
+    await fs.mkdir(path.resolve(TESTING_DIRECTORY, 'files'));
+    await fs.writeFile(
+      path.resolve(TESTING_DIRECTORY, 'files', 'movie.mp4'),
+      'data',
+      { encoding: 'utf-8' }
+    );
+    await delay(200);
+    await fs.rm(path.resolve(TESTING_DIRECTORY, 'files', 'movie.mp4'));
+
+    await eventually(() =>
+      expect(actual).toEqual<DirectoryChangeEvent>({
+        path: path.resolve(TESTING_DIRECTORY, 'files', 'movie.mp4'),
+        isDirectory: false,
+        isFile: false,
+        type: 'delete',
       })
     );
   });

@@ -1,4 +1,4 @@
-import { promises as fs, Stats } from 'fs';
+import { Stats } from 'fs';
 import { FSWatcher, watch } from 'chokidar';
 import { v4 as uuid } from 'uuid';
 
@@ -35,14 +35,18 @@ export class DirectoryMonitor {
       alwaysStat: true,
       awaitWriteFinish: true,
     });
-    this.watcher.on('add', (...args) =>
-      this.broadcastFileChange('add', ...args)
-    );
+    this.watcher.on('add', (...args) => this.broadcastChange('add', ...args));
     this.watcher.on('change', (...args) =>
-      this.broadcastFileChange('change', ...args)
+      this.broadcastChange('change', ...args)
     );
     this.watcher.on('unlink', (...args) =>
-      this.broadcastFileChange('delete', ...args)
+      this.broadcastChange('delete', ...args)
+    );
+    this.watcher.on('addDir', (...args) =>
+      this.broadcastChange('add', ...args)
+    );
+    this.watcher.on('unlinkDir', (...args) =>
+      this.broadcastChange('delete', ...args)
     );
     return Promise.resolve();
   }
@@ -66,7 +70,7 @@ export class DirectoryMonitor {
     }
   }
 
-  private async broadcastFileChange(
+  private async broadcastChange(
     type: DirectoryChangeEventType,
     path: string,
     stats?: Stats
