@@ -5,7 +5,7 @@ import { v4 as uuid } from 'uuid';
 import { FileChangeTransportStrategy } from './file-change-transport-strategy';
 import { eventually } from '@house-flix/testing';
 import { INestMicroservice, Injectable } from '@nestjs/common';
-import { MessagePattern } from '@nestjs/microservices';
+import { EventPattern } from '@nestjs/microservices';
 import { DirectoryChangeEvent } from './directory-monitor';
 
 const TESTING_DIR = path.resolve(__dirname, `${uuid()}`);
@@ -18,7 +18,7 @@ class FakeSubscriber {
     return FakeSubscriber.events;
   }
 
-  @MessagePattern<Partial<DirectoryChangeEvent>>({ type: 'add' })
+  @EventPattern<Partial<DirectoryChangeEvent>>({ type: 'add' })
   public handleAdds(event: DirectoryChangeEvent) {
     FakeSubscriber.events = [...FakeSubscriber.events, event];
   }
