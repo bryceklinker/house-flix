@@ -60,6 +60,7 @@ describe('DirectoryMonitor', () => {
     await fs.writeFile(path.resolve(TESTING_DIRECTORY, 'my-file.txt'), '123', {
       encoding: 'utf-8',
     });
+    await delay(1000);
     await fs.appendFile(path.resolve(TESTING_DIRECTORY, 'my-file.txt'), '456', {
       encoding: 'utf-8',
     });
