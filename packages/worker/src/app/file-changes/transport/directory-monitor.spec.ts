@@ -1,9 +1,10 @@
 import * as path from 'path';
 import { promises as fs } from 'fs';
+import { v4 as uuid } from 'uuid';
 import { DirectoryChangeEvent, DirectoryMonitor } from './directory-monitor';
 import { delay, eventually } from '@house-flix/testing';
 
-const TESTING_DIRECTORY = path.resolve(__dirname, 'tmp');
+const TESTING_DIRECTORY = path.resolve(__dirname, `${uuid()}`);
 describe('DirectoryMonitor', () => {
   let client: DirectoryMonitor;
 
