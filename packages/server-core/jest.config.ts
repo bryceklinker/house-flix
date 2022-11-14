@@ -11,6 +11,7 @@ export default {
   transform: {
     '^.+\\.[tj]s$': 'ts-jest',
   },
+  setupFilesAfterEnv: ['<rootDir>/src/testing/setup-tests.ts'],
   moduleFileExtensions: ['ts', 'js', 'html'],
   coverageDirectory: '../../coverage/packages/server-core',
 };
