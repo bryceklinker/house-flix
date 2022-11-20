@@ -26,6 +26,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 		.github\workflows\main.yaml = .github\workflows\main.yaml
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".build", ".build", "{980FD72D-788E-47B7-910D-54192508AA05}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "House.Flix.Testing.Support", "tests\House.Flix.Testing.Support\House.Flix.Testing.Support.csproj", "{059DAB61-5EE6-426A-BB3D-6E6529B9C34F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +66,10 @@ Global
 		{1C68F721-7B30-4721-9E35-CACE03AD77DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C68F721-7B30-4721-9E35-CACE03AD77DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C68F721-7B30-4721-9E35-CACE03AD77DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{059DAB61-5EE6-426A-BB3D-6E6529B9C34F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{059DAB61-5EE6-426A-BB3D-6E6529B9C34F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{059DAB61-5EE6-426A-BB3D-6E6529B9C34F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{059DAB61-5EE6-426A-BB3D-6E6529B9C34F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{9D47A50E-38C7-4B83-BFC6-B743F7E5673A} = {F4F5A295-FA5B-4E28-B87A-EE2E8AD4F53C}
@@ -68,5 +79,6 @@ Global
 		{A7D689FE-DB8D-45E5-9CED-8E32C8599573} = {CE990E5B-2A85-479B-88EB-C4C8C47F9778}
 		{1C68F721-7B30-4721-9E35-CACE03AD77DC} = {CE990E5B-2A85-479B-88EB-C4C8C47F9778}
 		{FFC5671F-7FD4-4792-80A5-6E37707822B9} = {00C6F146-1C14-447F-B43B-DDA1148385BF}
+		{059DAB61-5EE6-426A-BB3D-6E6529B9C34F} = {CE990E5B-2A85-479B-88EB-C4C8C47F9778}
 	EndGlobalSection
 EndGlobal
