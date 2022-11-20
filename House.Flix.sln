@@ -19,6 +19,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "House.Flix.Web.Tests", "tes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "House.Flix.Service.Tests", "tests\House.Flix.Service.Tests\House.Flix.Service.Tests.csproj", "{1C68F721-7B30-4721-9E35-CACE03AD77DC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{00C6F146-1C14-447F-B43B-DDA1148385BF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{FFC5671F-7FD4-4792-80A5-6E37707822B9}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\main.yaml = .github\workflows\main.yaml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -60,5 +67,6 @@ Global
 		{1CC121B5-5BEE-4943-8F59-3C86C8D03F50} = {CE990E5B-2A85-479B-88EB-C4C8C47F9778}
 		{A7D689FE-DB8D-45E5-9CED-8E32C8599573} = {CE990E5B-2A85-479B-88EB-C4C8C47F9778}
 		{1C68F721-7B30-4721-9E35-CACE03AD77DC} = {CE990E5B-2A85-479B-88EB-C4C8C47F9778}
+		{FFC5671F-7FD4-4792-80A5-6E37707822B9} = {00C6F146-1C14-447F-B43B-DDA1148385BF}
 	EndGlobalSection
 EndGlobal
