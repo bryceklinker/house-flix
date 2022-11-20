@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F4F5A295-FA5B-4E28-B87A-EE2E8AD4F53C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "House.Flix.Web", "src\House.Flix.Web\House.Flix.Web.csproj", "{9D47A50E-38C7-4B83-BFC6-B743F7E5673A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "House.Flix.Service", "src\House.Flix.Service\House.Flix.Service.csproj", "{271B52FB-207C-4805-A848-4E0FEB2888FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "House.Flix.Core", "src\House.Flix.Core\House.Flix.Core.csproj", "{768C8FAC-9C50-4FE3-9744-E9D1C1070CAF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{CE990E5B-2A85-479B-88EB-C4C8C47F9778}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "House.Flix.Core.Tests", "tests\House.Flix.Core.Tests\House.Flix.Core.Tests.csproj", "{1CC121B5-5BEE-4943-8F59-3C86C8D03F50}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "House.Flix.Web.Tests", "tests\House.Flix.Web.Tests\House.Flix.Web.Tests.csproj", "{A7D689FE-DB8D-45E5-9CED-8E32C8599573}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "House.Flix.Service.Tests", "tests\House.Flix.Service.Tests\House.Flix.Service.Tests.csproj", "{1C68F721-7B30-4721-9E35-CACE03AD77DC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9D47A50E-38C7-4B83-BFC6-B743F7E5673A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D47A50E-38C7-4B83-BFC6-B743F7E5673A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D47A50E-38C7-4B83-BFC6-B743F7E5673A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D47A50E-38C7-4B83-BFC6-B743F7E5673A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{271B52FB-207C-4805-A848-4E0FEB2888FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{271B52FB-207C-4805-A848-4E0FEB2888FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{271B52FB-207C-4805-A848-4E0FEB2888FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{271B52FB-207C-4805-A848-4E0FEB2888FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{768C8FAC-9C50-4FE3-9744-E9D1C1070CAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{768C8FAC-9C50-4FE3-9744-E9D1C1070CAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{768C8FAC-9C50-4FE3-9744-E9D1C1070CAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{768C8FAC-9C50-4FE3-9744-E9D1C1070CAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CC121B5-5BEE-4943-8F59-3C86C8D03F50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CC121B5-5BEE-4943-8F59-3C86C8D03F50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CC121B5-5BEE-4943-8F59-3C86C8D03F50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CC121B5-5BEE-4943-8F59-3C86C8D03F50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7D689FE-DB8D-45E5-9CED-8E32C8599573}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7D689FE-DB8D-45E5-9CED-8E32C8599573}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7D689FE-DB8D-45E5-9CED-8E32C8599573}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7D689FE-DB8D-45E5-9CED-8E32C8599573}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C68F721-7B30-4721-9E35-CACE03AD77DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C68F721-7B30-4721-9E35-CACE03AD77DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C68F721-7B30-4721-9E35-CACE03AD77DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C68F721-7B30-4721-9E35-CACE03AD77DC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9D47A50E-38C7-4B83-BFC6-B743F7E5673A} = {F4F5A295-FA5B-4E28-B87A-EE2E8AD4F53C}
+		{271B52FB-207C-4805-A848-4E0FEB2888FE} = {F4F5A295-FA5B-4E28-B87A-EE2E8AD4F53C}
+		{768C8FAC-9C50-4FE3-9744-E9D1C1070CAF} = {F4F5A295-FA5B-4E28-B87A-EE2E8AD4F53C}
+		{1CC121B5-5BEE-4943-8F59-3C86C8D03F50} = {CE990E5B-2A85-479B-88EB-C4C8C47F9778}
+		{A7D689FE-DB8D-45E5-9CED-8E32C8599573} = {CE990E5B-2A85-479B-88EB-C4C8C47F9778}
+		{1C68F721-7B30-4721-9E35-CACE03AD77DC} = {CE990E5B-2A85-479B-88EB-C4C8C47F9778}
+	EndGlobalSection
+EndGlobal
