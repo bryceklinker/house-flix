@@ -33,6 +33,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".build", ".build", "{980FD7
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "House.Flix.Testing.Support", "tests\House.Flix.Testing.Support\House.Flix.Testing.Support.csproj", "{059DAB61-5EE6-426A-BB3D-6E6529B9C34F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "House.Flix.Models", "src\House.Flix.Models\House.Flix.Models.csproj", "{9120C998-C337-4ABF-9D96-51F1DF2A0F8A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "House.Flix.PostgreSQL", "src\House.Flix.PostgreSQL\House.Flix.PostgreSQL.csproj", "{5FCBE0D9-F92F-40DA-9643-F80BA9587760}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".config", ".config", "{2C30FF9C-CF9D-44B3-B26A-7F4A2D08800A}"
+	ProjectSection(SolutionItems) = preProject
+		.config\dotnet-tools.json = .config\dotnet-tools.json
+		.csharpierrc.json = .csharpierrc.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".husky", ".husky", "{9C872746-BA34-4D35-A7C4-D65AAE4BD423}"
+	ProjectSection(SolutionItems) = preProject
+		.husky\task-runner.json = .husky\task-runner.json
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -70,6 +85,14 @@ Global
 		{059DAB61-5EE6-426A-BB3D-6E6529B9C34F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{059DAB61-5EE6-426A-BB3D-6E6529B9C34F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{059DAB61-5EE6-426A-BB3D-6E6529B9C34F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9120C998-C337-4ABF-9D96-51F1DF2A0F8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9120C998-C337-4ABF-9D96-51F1DF2A0F8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9120C998-C337-4ABF-9D96-51F1DF2A0F8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9120C998-C337-4ABF-9D96-51F1DF2A0F8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FCBE0D9-F92F-40DA-9643-F80BA9587760}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FCBE0D9-F92F-40DA-9643-F80BA9587760}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FCBE0D9-F92F-40DA-9643-F80BA9587760}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FCBE0D9-F92F-40DA-9643-F80BA9587760}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{9D47A50E-38C7-4B83-BFC6-B743F7E5673A} = {F4F5A295-FA5B-4E28-B87A-EE2E8AD4F53C}
@@ -80,5 +103,7 @@ Global
 		{1C68F721-7B30-4721-9E35-CACE03AD77DC} = {CE990E5B-2A85-479B-88EB-C4C8C47F9778}
 		{FFC5671F-7FD4-4792-80A5-6E37707822B9} = {00C6F146-1C14-447F-B43B-DDA1148385BF}
 		{059DAB61-5EE6-426A-BB3D-6E6529B9C34F} = {CE990E5B-2A85-479B-88EB-C4C8C47F9778}
+		{9120C998-C337-4ABF-9D96-51F1DF2A0F8A} = {F4F5A295-FA5B-4E28-B87A-EE2E8AD4F53C}
+		{5FCBE0D9-F92F-40DA-9643-F80BA9587760} = {F4F5A295-FA5B-4E28-B87A-EE2E8AD4F53C}
 	EndGlobalSection
 EndGlobal

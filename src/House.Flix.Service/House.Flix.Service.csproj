@@ -4,4 +4,9 @@
     <TargetFramework>net7.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\House.Flix.Core\House.Flix.Core.csproj" />
+    <ProjectReference Include="..\House.Flix.PostgreSQL\House.Flix.PostgreSQL.csproj" />
+  </ItemGroup>
+
 </Project>
