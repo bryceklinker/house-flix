@@ -10,10 +10,7 @@ public abstract class EntityTypeConfiguration<T> : IEntityTypeConfiguration<T>
     public void Configure(EntityTypeBuilder<T> builder)
     {
         builder.HasKey(e => e.Id);
-        builder
-            .Property(e => e.Id)
-            .UseIdentityAlwaysColumn()
-            .HasDefaultValueSql("gen_random_uuid()");
+        builder.Property(e => e.Id).HasDefaultValueSql("gen_random_uuid()");
     }
 
     protected abstract void ConfigureEntity(EntityTypeBuilder<T> builder);

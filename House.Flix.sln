@@ -29,6 +29,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".build", ".build", "{980FD72D-788E-47B7-910D-54192508AA05}"
 	ProjectSection(SolutionItems) = preProject
 		Directory.Build.props = Directory.Build.props
+		docker-compose.yaml = docker-compose.yaml
+		create-migration.sh = create-migration.sh
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "House.Flix.Testing.Support", "tests\House.Flix.Testing.Support\House.Flix.Testing.Support.csproj", "{059DAB61-5EE6-426A-BB3D-6E6529B9C34F}"
