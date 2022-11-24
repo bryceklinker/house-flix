@@ -1,4 +1,4 @@
 [ReportGenerator]
 reports = "test-results/*/coverage.cobertura.xml"
 targetdir = "coveragereport"
-reporttypes = "HtmlInline"
+reporttypes = "Html_Dark;Badges"
