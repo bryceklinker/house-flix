@@ -6,10 +6,7 @@ public static class WebApplicationExtensions
     {
         app.UseCors(p => p.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
         app.UseRouting();
-        app.UseEndpoints(e =>
-        {
-            e.MapControllers();
-        });
+        app.MapControllers();
         return app;
     }
 }

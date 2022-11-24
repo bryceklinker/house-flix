@@ -7,8 +7,8 @@ public class PersonEntity : IEntity
 {
     public Guid Id { get; set; }
 
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
+    public string FirstName { get; set; } = "";
+    public string LastName { get; set; } = "";
 
-    public List<MovieRoleEntity> MovieRoles { get; set; }
+    public List<MovieRoleEntity> MovieRoles { get; set; } = new();
 }

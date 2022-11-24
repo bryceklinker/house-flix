@@ -6,7 +6,7 @@ namespace House.Flix.Core.People.Entities;
 public class RoleEntity : IEntity
 {
     public Guid Id { get; set; }
-    public string Name { get; set; }
+    public string Name { get; set; } = "";
 
-    public List<MovieRoleEntity> MovieRoles { get; set; }
+    public List<MovieRoleEntity> MovieRoles { get; set; } = new();
 }
