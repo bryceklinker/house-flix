@@ -1,0 +1,4 @@
+[ReportGenerator]
+reports = "test-results/*/coverage.cobertura.xml"
+targetdir = "coveragereport"
+reporttypes = "HtmlInline"
