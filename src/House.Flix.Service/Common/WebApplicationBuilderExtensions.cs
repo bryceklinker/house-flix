@@ -17,7 +17,9 @@ public static class WebApplicationBuilderExtensions
                 $"You must provide a '{HouseFlixConnectionStringName}' connection string"
             );
 
-        builder.Services.AddHouseFlixCore().AddHouseFlixPostgreSql(houseFlixConnectionString);
+        builder.Services
+            .AddHouseFlixCore(builder.Configuration)
+            .AddHouseFlixPostgreSql(houseFlixConnectionString);
 
         builder.Services.AddControllers();
         return builder;

@@ -1,7 +1,5 @@
-using House.Flix.Core;
-using House.Flix.PostgreSQL;
+using House.Flix.Testing.Support.Http;
 using House.Flix.Testing.Support.Logging;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
@@ -12,17 +10,15 @@ public static class HouseFlixTestingServiceCollectionExtensions
 {
     public static IServiceCollection AddHouseFlixTestingSupport(
         this IServiceCollection services,
-        HouseFlixTestingSupportOptions? options = null
+        HouseFlixTestingSupportOptions options
     )
     {
-        var supportOptions = options ?? new HouseFlixTestingSupportOptions();
-        var loggerFactory = new FakeLoggerFactory();
-        services
-            .AddHouseFlixCore()
-            .AddHouseFlixPostgreSql(opts => opts.UseInMemoryDatabase(supportOptions.DatabaseName));
-        services.Replace<ILoggerFactory, FakeLoggerFactory>(loggerFactory);
-        services.TryAddSingleton(loggerFactory);
-        services.TryAddSingleton(loggerFactory.Logger);
+        services.TryAddSingleton(options.HttpClientFactory);
+        services.TryAddSingleton(options.LoggerFactory);
+        services.TryAddSingleton(options.Logger);
+        services.Replace<ILoggerFactory, FakeLoggerFactory>(options.LoggerFactory);
+        services.Replace<IHttpClientFactory, FakeHttpClientFactory>(options.HttpClientFactory);
+        options.ConfigureServices(services);
         return services;
     }
 

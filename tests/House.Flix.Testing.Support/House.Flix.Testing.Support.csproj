@@ -1,6 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <ItemGroup>
+        <PackageReference Include="Bogus" Version="34.0.2" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="../../src/House.Flix.Core/House.Flix.Core.csproj" />

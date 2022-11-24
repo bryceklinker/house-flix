@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Movies" />
+    <Folder Include="Movies\Commands" />
   </ItemGroup>
 
 </Project>
