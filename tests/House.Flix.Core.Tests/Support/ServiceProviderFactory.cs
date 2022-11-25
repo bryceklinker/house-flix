@@ -1,3 +1,7 @@
+using House.Flix.Core.Common.Cqrs;
+using House.Flix.Core.Common.Cqrs.Commands;
+using House.Flix.Core.Common.Cqrs.Events;
+using House.Flix.Core.Common.Cqrs.Queries;
 using House.Flix.PostgreSQL;
 using House.Flix.Testing.Support;
 using House.Flix.Testing.Support.Http;
@@ -23,7 +27,15 @@ public static class ServiceProviderFactory
             .AddSingleton(config)
             .AddHouseFlixTestingSupport(supportOptions)
             .AddHouseFlixCore(config, typeof(ServiceProviderFactory).Assembly)
-            .AddHouseFlixPostgreSql(opts => opts.UseInMemoryDatabase(supportOptions.DatabaseName));
+            .AddHouseFlixPostgreSql(opts => opts.UseInMemoryDatabase(supportOptions.DatabaseName))
+            .AddSingleton<ICqrsBus>(p =>
+            {
+                var eventBus = p.GetRequiredService<IEventBus>();
+                var queryBus = p.GetRequiredService<IQueryBus>();
+                var commandBus = p.GetRequiredService<ICommandBus>();
+                var innerBus = new CqrsBus(commandBus, queryBus, eventBus);
+                return new CapturingCqrsBus(innerBus);
+            });
         return services.BuildServiceProvider();
     }
 }

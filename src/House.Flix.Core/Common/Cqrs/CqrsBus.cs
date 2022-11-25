@@ -4,21 +4,15 @@ using House.Flix.Core.Common.Cqrs.Queries;
 
 namespace House.Flix.Core.Common.Cqrs;
 
-public interface ICqrsBus : IEventBus, ICommandBus, IQueryBus
-{
-    
-}
+public interface ICqrsBus : IEventBus, ICommandBus, IQueryBus { }
 
-internal class CqrsBus : ICqrsBus
+public class CqrsBus : ICqrsBus
 {
     private readonly ICommandBus _commandBus;
     private readonly IQueryBus _queryBus;
     private readonly IEventBus _eventBus;
 
-    public CqrsBus(
-        ICommandBus commandBus,
-        IQueryBus queryBus,
-        IEventBus eventBus)
+    public CqrsBus(ICommandBus commandBus, IQueryBus queryBus, IEventBus eventBus)
     {
         _commandBus = commandBus;
         _queryBus = queryBus;
