@@ -25,25 +25,22 @@ public class OmdbClient : IOmdbClient
 
     public async Task<OmdbSearchResponseModel?> SearchAsync(OmdbSearchParameters parameters)
     {
-        var query = $"?apiKey={Options.ApiKey}&s={parameters.Term}";
         return await GetClient()
-            .GetFromJsonAsync<OmdbSearchResponseModel>(query)
+            .GetFromJsonAsync<OmdbSearchResponseModel>(BuildQueryString(parameters))
             .ConfigureAwait(false);
     }
 
     public async Task<OmdbMovieResponseModel?> GetByTitle(OmdbGetByTitleParameters parameters)
     {
-        var query = $"?apiKey={Options.ApiKey}&t={parameters.Title}";
         return await GetClient()
-            .GetFromJsonAsync<OmdbMovieResponseModel>(query)
+            .GetFromJsonAsync<OmdbMovieResponseModel>(BuildQueryString(parameters))
             .ConfigureAwait(false);
     }
 
     public async Task<OmdbMovieResponseModel?> GetById(OmdbGetByIdParameters parameters)
     {
-        var query = $"?apiKey={Options.ApiKey}&i={parameters.ImdbId}";
         return await GetClient()
-            .GetFromJsonAsync<OmdbMovieResponseModel>(query)
+            .GetFromJsonAsync<OmdbMovieResponseModel>(BuildQueryString(parameters))
             .ConfigureAwait(false);
     }
 
@@ -52,5 +49,11 @@ public class OmdbClient : IOmdbClient
         var client = _httpClientFactory.CreateClient("omdb");
         client.BaseAddress = new Uri(Options.BaseUrl);
         return client;
+    }
+
+    private string BuildQueryString(OmdbParameters parameters)
+    {
+        var parametersQuery = parameters.ToQueryString();
+        return $"?apiKey={Options.ApiKey}&{parametersQuery}";
     }
 }

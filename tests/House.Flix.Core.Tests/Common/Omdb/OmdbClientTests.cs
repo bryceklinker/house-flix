@@ -24,36 +24,60 @@ public class OmdbClientTests
     [Fact]
     public async Task WhenSearchingForMoviesThenQueriesOmdbForMovies()
     {
+        HttpRequestMessage? request = null;
         var searchResponse = OmdbModelFactory.CreateSearchResponse();
         _handler.SetupJsonGet(
-            $"{_options.BaseUrl}?apiKey={_options.ApiKey}&s=Forest",
-            searchResponse
+            _options.BaseUrl,
+            searchResponse,
+            new SetupRequestOptions(Capture: req => request = req)
         );
 
         var actual = await _client.SearchAsync(new OmdbSearchParameters("Forest"));
 
         actual.Should().BeEquivalentTo(searchResponse);
+        request!.RequestUri!.Query
+            .Should()
+            .Contain("s=Forest")
+            .And.Contain($"apiKey={_options.ApiKey}");
     }
 
     [Fact]
     public async Task WhenGettingByIdThenQueriesOmdbForMoviesById()
     {
+        HttpRequestMessage? request = null;
         var response = OmdbModelFactory.CreateMovieResponse();
-        _handler.SetupJsonGet($"{_options.BaseUrl}?apiKey={_options.ApiKey}&i=653", response);
+        _handler.SetupJsonGet(
+            _options.BaseUrl,
+            response,
+            new SetupRequestOptions(Capture: req => request = req)
+        );
 
         var actual = await _client.GetById(new OmdbGetByIdParameters("653"));
 
         actual.Should().BeEquivalentTo(response);
+        request!.RequestUri!.Query
+            .Should()
+            .Contain("i=653")
+            .And.Contain($"apiKey={_options.ApiKey}");
     }
 
     [Fact]
     public async Task WhenGettingByTitleThenQueriesOmdbForMoviesByTitle()
     {
+        HttpRequestMessage? request = null;
         var response = OmdbModelFactory.CreateMovieResponse();
-        _handler.SetupJsonGet($"{_options.BaseUrl}?apiKey={_options.ApiKey}&t=Clerks", response);
+        _handler.SetupJsonGet(
+            $"{_options.BaseUrl}?apiKey={_options.ApiKey}&t=Clerks",
+            response,
+            new SetupRequestOptions(Capture: req => request = req)
+        );
 
         var actual = await _client.GetByTitle(new OmdbGetByTitleParameters("Clerks"));
 
         actual.Should().BeEquivalentTo(response);
+        request!.RequestUri!.Query
+            .Should()
+            .Contain("t=Clerks")
+            .And.Contain($"apiKey={_options.ApiKey}");
     }
 }
