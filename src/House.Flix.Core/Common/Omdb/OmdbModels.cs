@@ -1,3 +1,6 @@
+using System.Globalization;
+using System.Net;
+
 namespace House.Flix.Core.Common.Omdb;
 
 public static class OmdbDefaults
@@ -31,14 +34,40 @@ public record OmdbParameters(
     string Type = OmdbDefaults.DefaultType,
     int Year = OmdbDefaults.DefaultYear,
     string ResultType = OmdbDefaults.DefaultResultType
-);
+)
+{
+    public string ToQueryString()
+    {
+        var values = GetValues().Select(kv => $"{kv.Key}={WebUtility.UrlEncode(kv.Value)}");
+        return string.Join("&", values);
+    }
+
+    protected virtual Dictionary<string, string> GetValues()
+    {
+        var values = new Dictionary<string, string>();
+        if (!string.IsNullOrWhiteSpace(Type))
+            values.Add("type", Type);
+        if (Year > OmdbDefaults.DefaultYear)
+            values.Add("y", Year.ToString(CultureInfo.InvariantCulture));
+        values.Add("r", ResultType);
+        return values;
+    }
+}
 
 public record OmdbGetParameters(
     string Plot = OmdbDefaults.DefaultPlot,
     string Type = OmdbDefaults.DefaultType,
     int Year = OmdbDefaults.DefaultYear,
     string ResultType = OmdbDefaults.DefaultResultType
-) : OmdbParameters(Type, Year, ResultType);
+) : OmdbParameters(Type, Year, ResultType)
+{
+    protected override Dictionary<string, string> GetValues()
+    {
+        var values = base.GetValues();
+        values.Add("plot", Plot);
+        return values;
+    }
+}
 
 public record OmdbGetByTitleParameters(
     string Title,
@@ -46,7 +75,15 @@ public record OmdbGetByTitleParameters(
     string Type = OmdbDefaults.DefaultType,
     int Year = OmdbDefaults.DefaultYear,
     string ResultType = OmdbDefaults.DefaultResultType
-) : OmdbGetParameters(Plot, Type, Year, ResultType);
+) : OmdbGetParameters(Plot, Type, Year, ResultType)
+{
+    protected override Dictionary<string, string> GetValues()
+    {
+        var values = base.GetValues();
+        values.Add("t", Title);
+        return values;
+    }
+}
 
 public record OmdbGetByIdParameters(
     string ImdbId,
@@ -54,7 +91,15 @@ public record OmdbGetByIdParameters(
     string Type = OmdbDefaults.DefaultType,
     int Year = OmdbDefaults.DefaultYear,
     string ResultType = OmdbDefaults.DefaultResultType
-) : OmdbGetParameters(Plot, Type, Year, ResultType);
+) : OmdbGetParameters(Plot, Type, Year, ResultType)
+{
+    protected override Dictionary<string, string> GetValues()
+    {
+        var values = base.GetValues();
+        values.Add("i", ImdbId);
+        return values;
+    }
+}
 
 public record OmdbSearchParameters(
     string Term,
@@ -62,7 +107,16 @@ public record OmdbSearchParameters(
     string Type = OmdbDefaults.DefaultType,
     int Year = OmdbDefaults.DefaultYear,
     string ResultType = OmdbDefaults.DefaultResultType
-) : OmdbParameters(Type, Year, ResultType);
+) : OmdbParameters(Type, Year, ResultType)
+{
+    protected override Dictionary<string, string> GetValues()
+    {
+        var values = base.GetValues();
+        values.Add("s", Term);
+        values.Add("page", Page.ToString(CultureInfo.InvariantCulture));
+        return values;
+    }
+}
 
 public record OmdbMovieResponseModel(
     string Title,
