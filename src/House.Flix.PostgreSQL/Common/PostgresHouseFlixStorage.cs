@@ -1,3 +1,4 @@
+using House.Flix.Core.Common.Entities;
 using House.Flix.Core.Common.Storage;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,6 +12,11 @@ public class PostgresHouseFlixStorage : DbContext, IHouseFlixStorage
     IQueryable<T> IHouseFlixStorage.Set<T>() where T : class
     {
         return Set<T>();
+    }
+
+    void IHouseFlixStorage.Add<T>(T entity) where T : class
+    {
+        Add(entity);
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

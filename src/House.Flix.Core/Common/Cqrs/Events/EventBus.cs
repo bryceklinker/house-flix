@@ -6,7 +6,7 @@ namespace House.Flix.Core.Common.Cqrs.Events;
 
 public interface IEventBus
 {
-    Task SendEventAsync(IEvent @event);
+    Task PublishEventAsync(IEvent @event);
 }
 
 internal class EventBus : IEventBus
@@ -20,7 +20,7 @@ internal class EventBus : IEventBus
         _logger = logger;
     }
 
-    public async Task SendEventAsync(IEvent @event)
+    public async Task PublishEventAsync(IEvent @event)
     {
         await _logger.Capture(@event, () => _mediator.Publish(@event)).ConfigureAwait(false);
     }

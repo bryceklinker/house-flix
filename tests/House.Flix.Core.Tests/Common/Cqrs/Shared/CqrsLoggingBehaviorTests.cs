@@ -22,7 +22,7 @@ public class CqrsLoggingBehaviorTests
     public async Task WhenCommandIsSentThenCommandIsLogged()
     {
         await _bus.SendCommandAsync(new FakeCommand());
-        
+
         _logger.GetEntries(LogLevel.Information).Should().HaveCount(2);
     }
 
@@ -33,11 +33,11 @@ public class CqrsLoggingBehaviorTests
 
         _logger.GetEntries(LogLevel.Information).Should().HaveCount(2);
     }
-    
+
     [Fact]
     public async Task WhenEventIsSentThenEventIsLogged()
     {
-        await _bus.SendEventAsync(new FakeEvent());
+        await _bus.PublishEventAsync(new FakeEvent());
 
         _logger.GetEntries(LogLevel.Information).Should().HaveCount(2);
     }

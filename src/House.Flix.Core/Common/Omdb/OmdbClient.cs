@@ -1,4 +1,5 @@
 using System.Net.Http.Json;
+using House.Flix.Core.Common.Http;
 using Microsoft.Extensions.Options;
 
 namespace House.Flix.Core.Common.Omdb;
@@ -6,8 +7,8 @@ namespace House.Flix.Core.Common.Omdb;
 public interface IOmdbClient
 {
     Task<OmdbSearchResponseModel?> SearchAsync(OmdbSearchParameters parameters);
-    Task<OmdbMovieResponseModel?> GetByTitle(OmdbGetByTitleParameters parameters);
-    Task<OmdbMovieResponseModel?> GetById(OmdbGetByIdParameters parameters);
+    Task<OmdbVideoResponseModel?> GetByTitle(OmdbGetByTitleParameters parameters);
+    Task<OmdbVideoResponseModel?> GetById(OmdbGetByIdParameters parameters);
 }
 
 public class OmdbClient : IOmdbClient
@@ -30,23 +31,23 @@ public class OmdbClient : IOmdbClient
             .ConfigureAwait(false);
     }
 
-    public async Task<OmdbMovieResponseModel?> GetByTitle(OmdbGetByTitleParameters parameters)
+    public async Task<OmdbVideoResponseModel?> GetByTitle(OmdbGetByTitleParameters parameters)
     {
         return await GetClient()
-            .GetFromJsonAsync<OmdbMovieResponseModel>(BuildQueryString(parameters))
+            .GetFromJsonAsync<OmdbVideoResponseModel>(BuildQueryString(parameters))
             .ConfigureAwait(false);
     }
 
-    public async Task<OmdbMovieResponseModel?> GetById(OmdbGetByIdParameters parameters)
+    public async Task<OmdbVideoResponseModel?> GetById(OmdbGetByIdParameters parameters)
     {
         return await GetClient()
-            .GetFromJsonAsync<OmdbMovieResponseModel>(BuildQueryString(parameters))
+            .GetFromJsonAsync<OmdbVideoResponseModel>(BuildQueryString(parameters))
             .ConfigureAwait(false);
     }
 
     private HttpClient GetClient()
     {
-        var client = _httpClientFactory.CreateClient("omdb");
+        var client = _httpClientFactory.CreateClient(HttpClientNames.Omdb);
         client.BaseAddress = new Uri(Options.BaseUrl);
         return client;
     }

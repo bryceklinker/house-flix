@@ -8,7 +8,7 @@ public class ConfiguredHttpRequestStore
 
     public async Task<HttpResponseMessage?> FindResponseForRequest(HttpRequestMessage request)
     {
-        var configuredRequest = _requests.Reverse().FirstOrDefault(c => c.IsMatch(request));
+        var configuredRequest = _requests.FirstOrDefault(c => c.IsMatch(request));
 
         if (configuredRequest == null)
             return null;

@@ -1,3 +1,4 @@
+using House.Flix.Core.Common.Http;
 using House.Flix.Core.Common.Omdb;
 using House.Flix.Core.Tests.Support;
 using House.Flix.Testing.Support;
@@ -17,7 +18,9 @@ public class OmdbClientTests
     {
         var provider = ServiceProviderFactory.Create();
         _options = provider.GetRequiredService<IOptions<OmdbOptions>>().Value;
-        _handler = provider.GetRequiredService<FakeHttpClientFactory>().GetHandler("omdb");
+        _handler = provider
+            .GetRequiredService<FakeHttpClientFactory>()
+            .GetHandler(HttpClientNames.Omdb);
         _client = provider.GetRequiredService<IOmdbClient>();
     }
 
@@ -45,7 +48,7 @@ public class OmdbClientTests
     public async Task WhenGettingByIdThenQueriesOmdbForMoviesById()
     {
         HttpRequestMessage? request = null;
-        var response = OmdbModelFactory.CreateMovieResponse();
+        var response = OmdbModelFactory.CreateVideoResponse();
         _handler.SetupJsonGet(
             _options.BaseUrl,
             response,
@@ -65,7 +68,7 @@ public class OmdbClientTests
     public async Task WhenGettingByTitleThenQueriesOmdbForMoviesByTitle()
     {
         HttpRequestMessage? request = null;
-        var response = OmdbModelFactory.CreateMovieResponse();
+        var response = OmdbModelFactory.CreateVideoResponse();
         _handler.SetupJsonGet(
             $"{_options.BaseUrl}?apiKey={_options.ApiKey}&t=Clerks",
             response,

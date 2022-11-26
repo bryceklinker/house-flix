@@ -38,10 +38,10 @@ public class CapturingCqrsBus : ICqrsBus
         return _capturedCommands.OfType<TCommand>().ToArray();
     }
 
-    public async Task SendEventAsync(IEvent @event)
+    public async Task PublishEventAsync(IEvent @event)
     {
         _capturedEvents.Add(@event);
-        await _inner.SendEventAsync(@event).ConfigureAwait(false);
+        await _inner.PublishEventAsync(@event).ConfigureAwait(false);
     }
 
     public async Task<TResult> SendCommandAsync<TResult>(ICommand<TResult> command)

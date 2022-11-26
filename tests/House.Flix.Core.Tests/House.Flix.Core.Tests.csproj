@@ -13,8 +13,4 @@
     <ProjectReference Include="..\House.Flix.Testing.Support\House.Flix.Testing.Support.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Movies\Commands" />
-  </ItemGroup>
-
 </Project>

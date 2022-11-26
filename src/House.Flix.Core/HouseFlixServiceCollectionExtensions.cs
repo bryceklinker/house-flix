@@ -5,6 +5,7 @@ using House.Flix.Core.Common.Cqrs.Events;
 using House.Flix.Core.Common.Cqrs.Queries;
 using House.Flix.Core.Common.Cqrs.Shared;
 using House.Flix.Core.Common.Omdb;
+using House.Flix.Core.Common.Parsing;
 using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -37,6 +38,7 @@ public static class HouseFlixServiceCollectionExtensions
         services.TryAddTransient<ICommandBus, CommandBus>();
         services.TryAddTransient<ICqrsBus, CqrsBus>();
         services.TryAddTransient<IOmdbClient, OmdbClient>();
+        services.TryAddTransient<IVideoFileNameParser, VideoFileNameParser>();
         return services;
     }
 }

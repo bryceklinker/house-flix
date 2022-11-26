@@ -16,7 +16,7 @@ public record OmdbResponseModel(string Response);
 
 public record OmdbErrorResponseModel(string Response, string Error) : OmdbResponseModel(Response);
 
-public record OmdbSearchMovieModel(
+public record OmdbSearchVideoModel(
     string ImdbID,
     string Title,
     string Year,
@@ -27,7 +27,7 @@ public record OmdbSearchMovieModel(
 public record OmdbSearchResponseModel(
     string Response,
     string TotalResults,
-    OmdbSearchMovieModel[] Search
+    OmdbSearchVideoModel[] Search
 ) : OmdbResponseModel(Response);
 
 public record OmdbParameters(
@@ -118,7 +118,7 @@ public record OmdbSearchParameters(
     }
 }
 
-public record OmdbMovieResponseModel(
+public record OmdbVideoResponseModel(
     string Title,
     string Year,
     string Rated,

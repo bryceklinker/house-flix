@@ -12,7 +12,7 @@ public class MovieEntityConfiguration : EntityTypeConfiguration<MovieEntity>
         builder.Property(m => m.Plot).IsRequired().HasDefaultValueSql("");
         builder.Property(m => m.Rating).IsRequired().HasDefaultValueSql("");
         builder.Property(m => m.Title).IsRequired().HasDefaultValueSql("");
-        builder.Property(m => m.VideoFilePath).IsRequired();
+        builder.HasOne(m => m.VideoFile);
 
         builder.HasMany(m => m.MovieRoles).WithOne(mr => mr.Movie).IsRequired();
     }

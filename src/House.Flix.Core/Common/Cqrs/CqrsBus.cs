@@ -19,9 +19,9 @@ public class CqrsBus : ICqrsBus
         _eventBus = eventBus;
     }
 
-    public async Task SendEventAsync(IEvent @event)
+    public async Task PublishEventAsync(IEvent @event)
     {
-        await _eventBus.SendEventAsync(@event).ConfigureAwait(false);
+        await _eventBus.PublishEventAsync(@event).ConfigureAwait(false);
     }
 
     public async Task<TResult> SendCommandAsync<TResult>(ICommand<TResult> command)

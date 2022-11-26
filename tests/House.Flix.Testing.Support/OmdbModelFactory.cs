@@ -12,7 +12,7 @@ public static class OmdbModelFactory
             .Range(0, count)
             .Select(
                 _ =>
-                    new OmdbSearchMovieModel(
+                    new OmdbSearchVideoModel(
                         faker.Random.AlphaNumeric(6),
                         faker.Name.JobTitle(),
                         faker.Date.PastDateOnly().Year.ToString(),
@@ -24,10 +24,10 @@ public static class OmdbModelFactory
         return new OmdbSearchResponseModel("True", $"{count}", search);
     }
 
-    public static OmdbMovieResponseModel CreateMovieResponse()
+    public static OmdbVideoResponseModel CreateVideoResponse()
     {
         var faker = new Faker();
-        return new OmdbMovieResponseModel(
+        return new OmdbVideoResponseModel(
             faker.Name.JobTitle(),
             faker.Date.PastDateOnly().Year.ToString(),
             faker.PickRandom("PG-13", "R", "N/A"),
