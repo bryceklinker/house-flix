@@ -16,6 +16,7 @@ jobs:
           dotnet-version: '7.x.x'
 
       - run: dotnet tool restore
+        name: Restore Tools
         
       - run: dotnet restore
         name: Restore Packages 
