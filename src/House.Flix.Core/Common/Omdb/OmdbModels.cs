@@ -12,6 +12,15 @@ public static class OmdbDefaults
     public const int DefaultPage = 1;
 }
 
+public static class OmdbVideoTypes
+{
+    public const string Movie = "movie";
+    public const string Episode = "episode";
+    public const string Series = "series";
+
+    public static readonly string[] All = { Movie, Episode, Series };
+}
+
 public record OmdbResponseModel(string Response);
 
 public record OmdbErrorResponseModel(string Response, string Error) : OmdbResponseModel(Response);

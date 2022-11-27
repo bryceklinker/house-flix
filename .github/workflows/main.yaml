@@ -18,13 +18,17 @@ jobs:
       - run: dotnet tool restore
         
       - run: dotnet restore
+        name: Restore Packages 
         
       - run: dotnet build --no-restore
+        name: Build Solution
         
       - run: dotnet test --no-restore --collect:"XPlat Code Coverage" --results-directory "./test-results"
-      
-      - run: dotnet tool run reportgenerator
+        name: Run Unit Tests
         
+      - run: dotnet tool run reportgenerator
+        name: Generate Coverage Rerport
+
       - name: Upload coverage report artifact
         uses: actions/upload-artifact@v2.2.3
         with:

@@ -48,7 +48,7 @@ public static class OmdbModelFactory
             "",
             "",
             faker.Random.AlphaNumeric(6),
-            faker.PickRandom("movie", "series"),
+            faker.PickRandom(OmdbVideoTypes.All),
             faker.Date.PastDateOnly().ToString(),
             "",
             "",
