@@ -23,6 +23,9 @@ public static class HouseFlixServiceCollectionExtensions
         params Assembly[] assemblies
     )
     {
+        var assembliesToScan = assemblies
+            .Append(typeof(HouseFlixServiceCollectionExtensions).Assembly)
+            .ToArray();
         services.AddHttpClient();
 
         services.AddLogging(b =>
@@ -31,9 +34,8 @@ public static class HouseFlixServiceCollectionExtensions
         });
         services.Configure<OmdbOptions>(config.GetSection(OmdbOptions.Section));
         services.TryAddTransient(typeof(IPipelineBehavior<,>), typeof(CqrsLoggingMiddleware<,>));
-        services.AddMediatR(
-            assemblies.Append(typeof(HouseFlixServiceCollectionExtensions).Assembly).ToArray()
-        );
+        services.AddMediatR(assembliesToScan);
+        services.AddAutoMapper(cfg => cfg.AddMaps(assembliesToScan));
         services.TryAddTransient<IEventBus, EventBus>();
         services.TryAddTransient<IQueryBus, QueryBus>();
         services.TryAddTransient<ICommandBus, CommandBus>();

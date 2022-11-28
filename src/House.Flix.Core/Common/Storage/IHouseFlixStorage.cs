@@ -2,7 +2,7 @@ using House.Flix.Core.Common.Entities;
 
 namespace House.Flix.Core.Common.Storage;
 
-public interface IHouseFlixStorage
+public interface IHouseFlixStorage : IDisposable
 {
     IQueryable<T> Set<T>() where T : class, IEntity;
 
