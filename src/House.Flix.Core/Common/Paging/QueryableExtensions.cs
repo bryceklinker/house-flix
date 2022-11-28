@@ -18,6 +18,6 @@ public static class QueryableExtensions
             .ToArrayAsync(cancellationToken)
             .ConfigureAwait(false);
         var count = await source.CountAsync(cancellationToken).ConfigureAwait(false);
-        return new PagedResult<T>(items, query.Page, items.Length, count);
+        return new PagedResult<T>(items, query.Page, query.PageSize, count);
     }
 }

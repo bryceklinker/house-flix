@@ -41,7 +41,7 @@ public class SearchMoviesQueryHandlerTests : CqrsTest
         var result = await Bus.SendQueryAsync(new SearchMoviesQuery(PageSize: 5));
 
         result.Items.Should().HaveCount(3);
-        result.PageSize.Should().Be(3);
+        result.PageSize.Should().Be(5);
         result.TotalCount.Should().Be(3);
     }
 
