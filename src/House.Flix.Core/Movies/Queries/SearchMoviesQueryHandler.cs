@@ -6,7 +6,6 @@ using House.Flix.Core.Common.Storage;
 using House.Flix.Core.Movies.Entities;
 using House.Flix.Models.Common;
 using House.Flix.Models.Movies;
-using Microsoft.EntityFrameworkCore;
 
 namespace House.Flix.Core.Movies.Queries;
 
